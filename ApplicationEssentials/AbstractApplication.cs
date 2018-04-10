@@ -33,7 +33,7 @@ namespace Maad.ApplicationEssentials
 
                     InitializeLogging(kernel);
 
-                    Logger.LogDebug($"Starting application {Assembly.GetEntryAssembly().GetName()}");
+                    Logger.LogDebug($"Starting application {Assembly.GetEntryAssembly().GetName().Name}");
 
                     application.Run(kernel);
                 }
