@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Reflection;
+using System.Threading.Tasks;
 
 using Microsoft.Extensions.Logging;
 using Ninject;
@@ -17,25 +18,32 @@ namespace Maad.ApplicationEssentials
         }
 
 
-        public static void Start(IKernel kernel = null)
+        protected static IKernel Kernel
+        {
+            private get;
+            set;
+        }
+
+
+        public async static Task StartAsync(string[] args = null)
         {
             var application = new TApplication();
 
             try
             {
-                kernel = kernel ?? new StandardKernel();
+                Kernel = Kernel ?? new StandardKernel();
 
-                using (kernel)
+                using (Kernel)
                 {
-                    kernel.Load<LoggingModule>();
+                    Kernel.Load<LoggingModule>();
 
-                    application.RegisterServices(kernel);
+                    application.RegisterServices(Kernel);
 
-                    InitializeLogging(kernel);
+                    InitializeLogging();
 
                     Logger.LogDebug($"Starting application {Assembly.GetEntryAssembly().GetName().Name}");
 
-                    application.Run(kernel);
+                    await application.RunAsync(Kernel);
                 }
 
             }
@@ -45,8 +53,12 @@ namespace Maad.ApplicationEssentials
             }
         }
 
+        public static void Start(string[] args = null)
+        {
+            StartAsync(args).GetAwaiter().GetResult();
+        }
 
-        public abstract void Run(IKernel kernel);
+        public abstract Task RunAsync(IKernel kernel);
 
 
         public abstract void RegisterServices(IKernel kernel);
@@ -58,9 +70,9 @@ namespace Maad.ApplicationEssentials
         }
 
 
-        private static void InitializeLogging(IKernel kernel)
+        private static void InitializeLogging()
         {
-            ILoggerFactory loggerFactory = kernel.Get<ILoggerFactory>();
+            ILoggerFactory loggerFactory = Kernel.Get<ILoggerFactory>();
 
             Logger = loggerFactory.CreateLogger<TApplication>();
         }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 
 using Ninject;
 
@@ -6,7 +7,7 @@ namespace Maad.ApplicationEssentials
 {
     public interface IApplication
     {
-        void Run(IKernel kernel);
+        Task RunAsync(IKernel kernel);
 
 
         void RegisterServices(IKernel kernel);
