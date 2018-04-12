@@ -5,8 +5,6 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using Ninject;
 
-using Maad.ApplicationEssentials.Logging;
-
 namespace Maad.ApplicationEssentials
 {
     public abstract class AbstractAsyncApplication<TApplication> : ApplicationFoundation, IAsynchronousApplication where TApplication : IAsynchronousApplication, new()

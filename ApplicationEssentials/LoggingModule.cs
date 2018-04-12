@@ -2,7 +2,7 @@
 using Ninject;
 using Ninject.Modules;
 
-namespace Maad.ApplicationEssentials.Logging
+namespace Maad.ApplicationEssentials
 {
     public class LoggingModule : NinjectModule
     {

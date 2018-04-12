@@ -4,8 +4,6 @@ using System.Reflection;
 using Microsoft.Extensions.Logging;
 using Ninject;
 
-using Maad.ApplicationEssentials.Logging;
-
 namespace Maad.ApplicationEssentials
 {
     public abstract class AbstractApplication<TApplication> : ApplicationFoundation, ISynchronousApplication where TApplication : ISynchronousApplication, new()
