@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Reflection;
+using System.Threading.Tasks;
 
 using Microsoft.Extensions.Logging;
 using Ninject;
@@ -8,9 +9,9 @@ using Maad.ApplicationEssentials.Logging;
 
 namespace Maad.ApplicationEssentials
 {
-    public abstract class AbstractApplication<TApplication> : ApplicationFoundation, ISynchronousApplication where TApplication : ISynchronousApplication, new()
+    public abstract class AbstractAsyncApplication<TApplication> : ApplicationFoundation, IAsynchronousApplication where TApplication : IAsynchronousApplication, new()
     {
-        public static void Start(string[] args = null)
+        public static async Task StartAsync(string[] args)
         {
             var application = new TApplication();
 
@@ -28,7 +29,7 @@ namespace Maad.ApplicationEssentials
 
                     Logger.LogDebug($"Starting application {Assembly.GetEntryAssembly().GetName().Name}.");
 
-                    application.Run(Kernel);
+                    await application.RunAsync(Kernel);
                 }
 
             }
@@ -39,6 +40,8 @@ namespace Maad.ApplicationEssentials
         }
 
 
-        public abstract void Run(IKernel kernel);
+        public abstract Task RunAsync(IKernel kernel);
+
+
     }
 }

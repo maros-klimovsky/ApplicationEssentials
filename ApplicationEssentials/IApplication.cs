@@ -7,9 +7,6 @@ namespace Maad.ApplicationEssentials
 {
     public interface IApplication
     {
-        Task RunAsync(IKernel kernel);
-
-
         void RegisterServices(IKernel kernel);
 
 
