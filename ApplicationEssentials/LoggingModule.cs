@@ -8,13 +8,14 @@ namespace Maad.ApplicationEssentials
     {
         public override void Load()
         {
-            Kernel.Bind<ILoggerFactory>().ToMethod((context) =>
-            {
-                var factory = Kernel.Get<LoggerFactory>();
-                factory.AddLog4Net();
+            Kernel.Bind<ILoggerFactory>().ToMethod(
+                (context) =>
+                {
+                    var factory = Kernel.Get<LoggerFactory>();
+                    factory.AddLog4Net();
 
-                return factory;
-            });
+                    return factory;
+                });
         }
     }
 }
