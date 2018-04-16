@@ -16,7 +16,7 @@ namespace Maad.ApplicationEssentials
             {
                 Kernel = Kernel ?? new StandardKernel();
 
-                using (Kernel)
+                using(Kernel)
                 {
                     Kernel.Load<LoggingModule>();
 
