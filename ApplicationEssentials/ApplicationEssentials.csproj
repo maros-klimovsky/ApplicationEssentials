@@ -3,6 +3,19 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <RootNamespace>Maad.ApplicationEssentials</RootNamespace>
+    <PackageId>Maad.ApplicationEssentials</PackageId>
+    <Version>0.0.2-alpha</Version>
+    <Authors>Maros Klimovsky</Authors>
+    <Company />
+    <Product>Application Essentials</Product>
+    <Description>Framework for building applications in .NET Framework and .NET Core written as .NET Standard library.</Description>
+    <Copyright>2018</Copyright>
+    <PackageProjectUrl>https://github.com/maros-klimovsky/ApplicationEssentials</PackageProjectUrl>
+    <PackageIconUrl>http://download.seaicons.com/icons/iconka/meow/64/cat-poo-icon.png</PackageIconUrl>
+    <RepositoryUrl>https://github.com/maros-klimovsky/ApplicationEssentials</RepositoryUrl>
+    <PackageTags>application essentials base inversion-of-control console</PackageTags>
+    <PackageReleaseNotes>Initial release</PackageReleaseNotes>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>
