@@ -7,11 +7,13 @@ namespace ApplicationEssentials.Tests.ArgumentsProcessing
     {
         private ArgumentsProcessor processor;
 
+
         [SetUp]
         public void SetUp()
         {
             processor = new ArgumentsProcessor();
         }
+
 
         [Test]
         public void ParseArguments_EmptyArgs_ReturnsEmptyObject()
@@ -22,6 +24,7 @@ namespace ApplicationEssentials.Tests.ArgumentsProcessing
 
             Assert.That(result, Is.TypeOf(typeof(object)));
         }
+
 
         [Test]
         public void ParseArguments_When_PositionalParametersAreInCorrectOrder_Then_ReturnInitializedClass()

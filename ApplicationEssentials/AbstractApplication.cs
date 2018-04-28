@@ -8,7 +8,7 @@ namespace Maad.ApplicationEssentials
 {
     public abstract class AbstractApplication<TApplication> : ApplicationFoundation, ISynchronousApplication where TApplication : ISynchronousApplication, new()
     {
-        public static void Start(string[] args = null)
+        public static void Start()
         {
             var application = new TApplication();
 

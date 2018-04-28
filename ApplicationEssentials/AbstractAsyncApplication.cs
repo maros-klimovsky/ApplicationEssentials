@@ -9,7 +9,7 @@ namespace Maad.ApplicationEssentials
 {
     public abstract class AbstractAsyncApplication<TApplication> : ApplicationFoundation, IAsynchronousApplication where TApplication : IAsynchronousApplication, new()
     {
-        public static async Task StartAsync(string[] args)
+        public static async Task StartAsync()
         {
             var application = new TApplication();
 
